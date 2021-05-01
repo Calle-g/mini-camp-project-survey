@@ -66,7 +66,7 @@ export const App = () => {
           <h1>Welcome to our streaming survey!</h1>
           <h2>
             {/* eslint-disable-next-line max-len */}
-            Please fill in the survey so we can improve our on service to compete with our competitors!
+            Please fill in the survey so we can improve our service to compete with our competitors!
           </h2>
           <form className="main-form" onSubmit={(event) => event.preventDefault()}>
             <div className="form-group select-one">
