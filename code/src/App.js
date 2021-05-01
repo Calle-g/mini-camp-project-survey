@@ -97,12 +97,17 @@ export const App = () => {
               setHighlightEmail={setHighlightEmail}
               validValue={validEmail}
               setValidValue={setValidEmail} />
-            <button
-              className="button"
-              type="button"
-              onClick={() => handleButtonClick()}>
-              Submit answers
-            </button>
+            <div className="button-box">
+              <button
+                type="button"
+                onClick={() => handleButtonClick()}>
+                Submit answers
+              </button>
+              <div className="border" />
+              <div className="border" />
+              <div className="border" />
+              <div className="border" />
+            </div>
           </form>
         </div>)}
       {completedForm

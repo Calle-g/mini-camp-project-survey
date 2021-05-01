@@ -1,3 +1,7 @@
+.button-box, .email-input, .text-area {
+  box-sizing: border-box;
+}
+
 body {
   font: 100% / 1.414 "Open Sans", "Roboto", arial, sans-serif;
   background: #e9e9e9;
@@ -27,7 +31,6 @@ h3 {
   width: 100%;
   height: 64px;
   padding: 5px;
-  box-sizing: border-box;
   border-radius: 5px;
   resize: none;
   font-size: 14px;
@@ -48,16 +51,81 @@ h3 {
 .form-control:focus, .text-area:focus, .email-input:focus {
   outline: none;
 }
-.button {
-  padding: .5rem 2.5rem;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #fff;
-  background: #111;
-  border: 0;
-  display: block;
+.button-box button {
+  width:100%;
+  height:50px;
+  position:relative;
+  background: rgba(9, 9, 9);
+  text-transform:uppercase;
+  color:white;
+  font-weight:700;
+  letter-spacing:1px;
+  border:none;
+  font-size:15px;
+  outline:none;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  cursor: pointer;
 }
+.border {
+  position:absolute;
+  background:none;
+  transition:all .5s ease-in-out;
+}
+.button-box {
+  text-transform: uppercase;
+  position:relative;
+  max-width: 200px;
+  min-width: 150px;
+  flex: 20%;
+}
+.button-box>.border:nth-of-type(1){
+  top:0;
+  left:0;
+  width:0;
+  height:0;
+  border-top:3px solid white;
+}
+
+.button-box>.border:nth-of-type(2){
+  top:0;
+  right:0;
+  width:10px;
+  height:0;
+  border-right:3px solid white;
+}
+
+.button-box>.border:nth-of-type(3){
+  bottom:0;
+  right:0;
+  width:0;
+  height:0;
+  border-bottom:3px solid white;
+}
+
+.button-box>.border:nth-of-type(4){
+  bottom:0;
+  left:0;
+  width:0;
+  height:0;
+  border-left:3px solid white;
+}
+
+.button-box:hover .border:nth-of-type(1){
+  width:100%;
+}
+
+.button-box:hover .border:nth-of-type(2){
+  height:50px;
+}
+
+.button-box:hover .border:nth-of-type(3){
+  width:100%;
+}
+
+.button-box:hover .border:nth-of-type(4){
+  height:50px;
+}
+
 .small-button {
   position: absolute;
   font-size: 12px;
@@ -77,17 +145,14 @@ h3 {
 .select-one .form-label {
   margin-bottom: 28px;
 }
-.form-group.select-one {
-  margin-bottom: 60px;
-}
 .input-container {
   max-width: 500px;
   margin-bottom: 28px;
   position: relative;
 }
-.button:hover, .small-button:hover {
+.small-button:hover {
   cursor: pointer;
-  color: #eae5e5;
+  background-color: #4e4e4e;
 }
 .input-container .form-control {
   margin-top: 10px;
@@ -138,16 +203,21 @@ h3 {
 .email-input {
   padding: 10px 10px;
   font-size: 14px;
-  box-sizing: border-box;
   width: 100%;
   border: 1px solid black;
 }
 .answer-entry {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   background-color: #e9e9e9;
   padding: 15px;
   max-width: 500px;
   font-size: 1rem;
+}
+.answers-list .form-label:not(first-child) {
+  margin-top: 25px;
+}
+.answers-list .button-box {
+  margin-top: 30px;
 }
 .answer-entry .title {
   font-weight: bold;
@@ -169,10 +239,10 @@ h3 {
   top: -20px
 }
 .radio-group {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   max-width: 400px;
-  grid-gap: 10px;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
 }
 .required-box {
   border: 1px solid #c30a0a;
@@ -206,4 +276,70 @@ h3 {
     visibility: visible;
     line-height: normal;
   }
+}
+label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  margin: 8px 0;
+
+  cursor: pointer;
+  position: relative;
+}
+.radio-group input {
+  opacity: 0;
+}
+.design {
+  width: 16px;
+  height: 16px;
+
+  border: 1px solid hsl(0, 0%, 14%);
+  border-radius: 100%;
+  margin-right: 16px;
+
+  position: relative;
+}
+
+.design::before,
+.design::after {
+  content: "";
+  display: block;
+
+  width: inherit;
+  height: inherit;
+
+  border-radius: inherit;
+
+  position: absolute;
+  transform: scale(0);
+  transform-origin: center center;
+}
+
+.design:before {
+  background: hsl(0, 0%, 14%);
+  opacity: 0;
+  transition: .3s;
+}
+
+.design::after {
+  background: hsl(0, 0%, 56%);
+  opacity: .4;
+  transition: .6s;
+}
+.radio-group input:checked+.design::before {
+  opacity: 1;
+  transform: scale(.6);
+}
+.radio-group input:hover+.design,
+.radio-group input:focus+.design {
+  border: 1px solid hsl(0, 0%, 33%);
+}
+.radio-group input:hover+.design:before,
+.radio-group input:focus+.design:before {
+  background: hsl(0, 0%, 33%);
+}
+.radio-group input:hover~.text {
+  font-weight: bold;
 }

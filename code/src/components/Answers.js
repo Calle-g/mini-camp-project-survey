@@ -25,6 +25,16 @@ export const Answers = (props) => {
       <div className="answer-entry">{device}</div>
       <div className="form-label">You will also receive our weekly newspost to</div>
       <div className="answer-entry">{email}</div>
-      <button className="button" type="button" onClick={() => setShowConfirmation(true)}>Confirm answers</button>
+      <div className="button-box">
+        <button
+          type="button"
+          onClick={() => setShowConfirmation(true)}>
+          Confirm answers
+        </button>
+        <div className="border" />
+        <div className="border" />
+        <div className="border" />
+        <div className="border" />
+      </div>
     </div>)
 }

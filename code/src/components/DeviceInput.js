@@ -26,7 +26,8 @@ export const DeviceInput = (props) => {
                 value={deviceValue}
                 onChange={(event) => onChange(event.target.value)}
                 checked={deviceValue === device} />
-              {deviceValue}
+              <span className="design" />
+              <span className="text">{deviceValue}</span>
             </label>
           )
         })}
